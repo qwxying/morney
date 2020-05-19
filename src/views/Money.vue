@@ -2,11 +2,6 @@
   <div class="nav-wrapper">
     <div class="content">
       <p>记账</p>
-      <p>记账</p>
-      <p>记账</p>
-      <p>记账</p>
-      <p>记账</p>
-
     </div>
     <Nav/>
   </div>
