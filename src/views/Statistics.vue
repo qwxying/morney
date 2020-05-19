@@ -1,6 +1,7 @@
 <template>
   <Layout>
     <p>统计</p>
+    <Nav/>
   </Layout>
 </template>
 
