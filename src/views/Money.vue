@@ -1,11 +1,12 @@
 <template>
-  <Layout class="">
+  <Layout class-prefix="layout">
     <div class="tags">
       <ul class="current">
         <li>衣</li>
         <li>食</li>
         <li>住</li>
         <li>行</li>
+
       </ul>
       <div class="new">
         <button>新增标签</button>
@@ -51,6 +52,16 @@
     name: 'Money',
   };
 </script>
+
+<style lang="scss">
+  .layout-content {
+    border: 3px solid red;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+</style>
 
 <style lang="scss" scoped>
   @import "~@/assets/style/helper.scss";
@@ -148,6 +159,7 @@
   }
 
   .notes {
+
     font-size: 14px;
     background: #f5f5f5;
     padding-left: 16px;
@@ -168,11 +180,19 @@
   }
 
   .tags {
+    border: 1px solid green;
     font-size: 14px;
     padding: 16px;
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    justify-content: flex-end;
 
     > .current {
       display: flex;
+      flex-wrap: wrap;
+      overflow: auto;
+
 
       > li {
         background: #d9d9d9;
@@ -182,6 +202,7 @@
         border-radius: $h/2;
         padding: 0 16px;
         margin-right: 12px;
+        margin-top: 4px;
       }
     }
 
