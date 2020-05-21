@@ -71,8 +71,6 @@
 
         &.selected {
           background: darken($bg, 30%);
-
-
         }
       }
     }

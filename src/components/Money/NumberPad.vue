@@ -96,8 +96,6 @@
           width: 50%;
         }
 
-        //$bg: #71c0ff;
-        //$bg:#a6d1fd;
         $bg: #f2f2f2;
 
         &:nth-child(1) {
@@ -127,7 +125,6 @@
         &:nth-child(12) {
           background: darken($bg, 24%);
         }
-      ;
       }
     }
   }
