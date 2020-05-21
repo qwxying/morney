@@ -6,7 +6,6 @@
           @click="toggle(tag)">
         {{tag}}
       </li>
-
     </ul>
     <div class="new">
       <button @click="create">新增标签</button>
@@ -20,16 +19,17 @@
 
   @Component
   export default class Tags extends Vue {
-    @Prop() dataSource: string[] | undefined;
+    @Prop() readonly dataSource: string[] | undefined;
     selectedTags: string[] = [];
 
-    toggle(tag) {
+    toggle(tag: string) {
       const index = this.selectedTags.indexOf(tag);
       if (index >= 0) {
         this.selectedTags.splice(index, 1);
-
-      } else
+      } else {
         this.selectedTags.push(tag);
+      }
+      this.$emit('update:value', this.selectedTags);
     }
 
     create() {
