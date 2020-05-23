@@ -2,45 +2,39 @@
   <Layout>
     <div class="tags">
       <router-link class="tag"
-                   v-for="tag in tags  "
-                   :key="tag.id"
+                   v-for="tag in tags" :key="tag.id"
                    :to="`/labels/edit/${tag.id}`">
         <span>{{tag.name}}</span>
         <Icon name="right"/>
       </router-link>
     </div>
     <div class="createTag-wrapper">
-      <Button class="createTag" @click="createTag">新建标签</Button>
+      <Button class="createTag"
+              @click="createTag">
+        新建标签
+      </Button>
     </div>
   </Layout>
 </template>
 
 <script lang="ts">
-  import Vue from 'vue';
   import {Component} from 'vue-property-decorator';
-  import tagListModel from '@/models/tagListModel';
   import Button from '@/components/Button.vue';
-
-  tagListModel.fetch();
+  import {mixins} from 'vue-class-component';
+  import TagHelper from '@/mixins/TagHelper';
   @Component({
-    components: {Button}
+    components: {Button},
   })
-  export default class extends Vue {
-    tags = tagListModel.data;
-
-    createTag() {
-      const name = window.prompt('请输入标签名：');
-      if (name) {
-        const message = tagListModel.create(name);
-        if (message === 'success') {
-          window.alert('添加成功');
-        } else if (message === 'duplicated') {
-          window.alert('标签名重复，请重新输入');
-        }
-      }
+  export default class Labels extends mixins(TagHelper) {
+    get tags() {
+      return this.$store.state.tagList;
+    }
+    beforeCreate() {
+      this.$store.commit('fetchTags');
     }
   }
 </script>
+
 <style lang="scss" scoped>
   .tags {
     background: white;
