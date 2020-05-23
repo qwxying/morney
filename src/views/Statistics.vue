@@ -1,6 +1,6 @@
 <template>
   <Layout>
-    <p>统计</p>
+    <p>正在更新中，敬请期待！</p>
   </Layout>
 </template>
 
@@ -9,3 +9,11 @@
     name: 'Statistics',
   };
 </script>
+
+<style>
+  p{
+    text-align: center;
+    margin: 100px auto  ;
+
+  }
+</style>
