@@ -54,9 +54,10 @@
         .sort((a, b) => dayjs(b.createdAt).valueOf() - dayjs(a.createdAt).valueOf());
       type Result = { title: string; total?: number; items: RecordItem[] }[]
       const result: Result = [{title: dayjs(newList[0].createdAt).format('YYYY-MM-DD'), items: [newList[0]]}];
-      for (let i = 0; i < newList.length; i++) {
+      for (let i = 1; i < newList.length; i++) {
         const current = newList[i];
         const last = result[result.length - 1];
+
         if (dayjs(last.title).isSame(dayjs(current.createdAt), 'day')) {
           last.items.push(current);
         } else {
