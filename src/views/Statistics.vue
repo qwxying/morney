@@ -3,9 +3,6 @@
     <Tabs class-prefix="type"
           :data-source="recordTypeList"
           :value.sync="type"/>
-    <Tabs class-prefix="interval"
-          :data-source="intervalList"
-          :value.sync="interval"/>
     <ol>
       <li v-for="(group, index) in groupedList" :key="index">
         <h3 class="title">{{beautify(group.title)}}</h3>
@@ -25,7 +22,6 @@
   import Vue from 'vue';
   import {Component} from 'vue-property-decorator';
   import Tabs from '@/components/Tabs.vue';
-  import intervalList from '@/constants/intervalList';
   import recordTypeList from '@/constants/recordTypeList';
   import dayjs from 'dayjs';
   import clone from '@/lib/clone';
@@ -72,8 +68,6 @@
     }
 
     type = '-';
-    interval = 'day';
-    intervalList = intervalList;
     recordTypeList = recordTypeList;
   }
 </script>
@@ -81,10 +75,10 @@
 <style lang="scss" scoped>
   ::v-deep {
     .type-tabs-item {
-      background: white;
+      background: #c4c4c4;
 
       &.selected {
-        background: #c4c4c4;
+        background: white;
 
         &::after {
           display: none;
