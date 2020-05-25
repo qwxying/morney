@@ -7,7 +7,7 @@
                 @update:value="onUpdateNotes"
       />
     </div>
-    <Tabs :data-source="recordTypeList" :value="record.type"/>
+    <Tabs :data-source="recordTypeList" :value.sync="record.type"/>
     <NumberPad :value.sync="record.amount" @submit="saveRecord"/>
   </Layout>
 </template>
