@@ -39,7 +39,8 @@ const store = new Vuex.Store({
           break;
         }
       }
-      if (index >= 0) {
+      if (state.tagList.length === 1) window.alert('最后一个标签了，别删除我好吗？给我换一个名字吧~');
+      else if (index >= 0) {
         state.tagList.splice(index, 1);
         store.commit('saveTags');
         router.back();
@@ -73,15 +74,13 @@ const store = new Vuex.Store({
       const names = state.tagList.map(item => item.name);
       if (names.indexOf(name) >= 0) {
         window.alert('标签名重复了');
-      } else if (name === '' || name === ' ') {
-        window.alert('标签名不能为空');
       } else if (name === null) {
         console.log('null');
       } else {
         const id = createId().toString();
         state.tagList.push({id, name: name});
         store.commit('saveTags');
-        window.alert('添加成功');
+        // window.alert('添加成功');
       }
     },
     saveTags(state) {
